@@ -216,8 +216,13 @@ const scarabDocumentLinks = document.querySelectorAll(".scarab_document");
 for (const scarabDocumentLink of scarabDocumentLinks) {
     scarabDocumentLink.addEventListener("click", () => {
         const pageTitle = localStorage.getItem("savedLastScarabPage");
-        const pageLink = `documentation/${pageTitle}.html`;
-        scarabDocumentLink.setAttribute("href", pageLink);
+        if (pageTitle != null) {
+            const pageLink = `documentation/${pageTitle}.html`;
+            scarabDocumentLink.setAttribute("href", pageLink);
+        } else {
+            const pageLink = `documentation/introduction.html`;
+            scarabDocumentLink.setAttribute("href", pageLink);
+        }
     })
 }
 
